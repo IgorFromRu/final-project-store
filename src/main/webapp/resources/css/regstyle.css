@@ -1,0 +1,35 @@
+.inp{
+    padding:20px; /* отступы */
+}
+.regForm {
+    width:300px;
+    margin: 10% auto; /* убираем отступы */
+    background-color: #282830; /* фон заголовка */
+    border-radius: 10px;
+    color: #fff; /* цвет текста */
+    font-size: 14px; /* размер шрифта */
+    padding: 20px; /* отступы */
+    text-align: center; /* выравниваем текст по центру */
+    text-transform: uppercase; /* все символы заглавные */
+    border-style: double;
+}
+
+.pass{
+    width:100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    margin: 1px auto;
+    border: 1px solid #dcdcdc; /* рамка */
+    padding: 12px 10px; /* отступы текста */
+    border-radius: 5px;
+}
+
+.btn{
+    background: #4CAF50; /* фон */
+    border-radius: 5px; /* закругленные углы */
+    color: #fff; /* цвет текста */
+    width: 100%; /* ширина */
+    font-weight: bold; /* жирный текст */
+    padding: 12px 20px; /* оступы для текста */
+}

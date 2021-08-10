@@ -1,0 +1,21 @@
+ul {
+    font: 14px Verdana, Geneva, sans-serif;
+    text-align: center;
+}
+
+ul li {
+    display : inline-block;
+    width : 250px;
+    height: 250px;
+    margin-bottom: 10px;
+    background: white;
+    vertical-align: top;
+    text-align: center;
+    line-height: normal;
+    border-radius: 5px;
+    border-style: double;
+}
+.img-product{
+    width : 250px;
+    height: 200px;
+}

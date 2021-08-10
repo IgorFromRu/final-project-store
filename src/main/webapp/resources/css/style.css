@@ -1,0 +1,110 @@
+body {
+    background-image: url(images/kitchen.jpg);
+    background-size: cover;
+    background-attachment: fixed
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    border-radius: 5px;
+    border-style: double;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.reg {
+    float: right;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.topnav a.activereg {
+    float: right;
+    background-color: #4CAF50;
+    color: white;
+}
+.topnav .logo{
+    float: left;
+    width: 100px;
+    height: 50px;
+}
+.button{
+    float: right;
+    color: white;
+    border: 0;
+    background-color: #333;
+    width: 100px;
+    height: 47px;
+    font-family: monospace;
+    font-size: 17px;
+}
+button:hover, input[type="submit"]:hover {
+    color: black;
+    background-color: #ddd;
+}
+.info-block {
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 25%;
+    margin-right: 30%;
+    background-color: beige;
+    border-style: double;
+    border-radius: 5px;
+}
+
+.log {
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+    width: 270px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.center-text {
+    margin-bottom: 70px;
+    font-size: 19px;
+    line-height: 23px;
+    color: #676767;
+    text-align: center;
+}
+
+.img-about {
+    width:80%;
+    height: 500px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.map {
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.logForm h1 {
+    margin: 0; /* убираем отступы */
+    background-color: #282830; /* фон заголовка */
+    border-radius: 10px 10px 0 0; /* закругляем углы сверху */
+    color: #fff; /* цвет текста */
+    font-size: 14px; /* размер шрифта */
+    padding: 20px; /* отступы */
+    text-align: center; /* выравниваем текст по центру */
+    text-transform: uppercase; /* все символы заглавные */
+}

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,6 +23,8 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Product> productList;
 
     public User() {
     }
@@ -93,4 +96,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
 }

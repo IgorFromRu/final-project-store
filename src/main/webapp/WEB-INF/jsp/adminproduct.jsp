@@ -33,7 +33,7 @@
     </button>
     <div class="dropdown-content">
         <a href="admin">Управление пользователями</a>
-        <a href="adminproduct">Управление товарами</a>
+        <a href="product">Управление товарами</a>
         <a href="#">еще что-то</a>
     </div>
 </div>
@@ -42,21 +42,17 @@
         <table>
             <thead>
             <th>ID</th>
-            <th>UserName</th>
-            <th>Password</th>
-            <th>Roles</th>
+            <th>Name</th>
+            <th>Price</th>
             </thead>
-            <c:forEach items="${allUsers}" var="user">
+            <c:forEach items="${allProducts}" var="product">
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.password}</td>
-                    <td>
-                        <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
-                    </td>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/admin" method="post">
-                            <input type="hidden" name="userId" value="${user.id}"/>
+                            <input type="hidden" name="productId" value="${product.id}"/>
                             <input type="hidden" name="action" value="delete"/>
                             <button type="submit">Delete</button>
                         </form>

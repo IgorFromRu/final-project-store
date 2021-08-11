@@ -3,6 +3,7 @@ package ru.romanov.store.service;
 import ru.romanov.store.entity.Product;
 import ru.romanov.store.entity.Role;
 import ru.romanov.store.entity.User;
+import ru.romanov.store.repository.ProductRepository;
 import ru.romanov.store.repository.RoleRepository;
 import ru.romanov.store.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class UserService implements UserDetailsService {
     UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    ProductRepository productRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -77,5 +80,9 @@ public class UserService implements UserDetailsService {
 
     public List<Product> UsergtListProducts(User user){
         return userRepository.findByUsername(user.getUsername()).getProductList();
+    }
+
+    public boolean addProductUserList(User user, String productName) {
+        return true;
     }
 }

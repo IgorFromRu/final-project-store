@@ -32,102 +32,27 @@
 </div>
 <div class="info-block">
     <ul>
-        <li>
-        <div>
-            <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen.jpg" alt="Кухня">
-            <small>Описание товара</small>
-        </div>
-    </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen1.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen2.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen3.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/sleep.jpeg" alt="Спальня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/TV.jpg" alt="Стенка ТВ">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/TV1.jpg" alt="Стенка ТВ">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/TV2.jpg" alt="Стенка ТВ">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen1.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen2.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/kitchen3.jpg" alt="Кухня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/sleep.jpeg" alt="Спальня">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/TV.jpg" alt="Стенка ТВ">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/TV1.jpg" alt="Стенка ТВ">
-                <small>Описание товара</small>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img class="img-product" src="${contextPath}/resources/css/images/products/TV2.jpg" alt="Стенка ТВ">
-                <small>Описание товара</small>
-            </div>
-        </li>
+        <table>
+            <thead>
+            <th>Name</th>
+            <th>Price</th>
+            </thead>
+            <c:forEach items="${allProducts}" var="product">
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <sec:authorize access="isAuthenticated()">
+                        <td>
+                            <form action="${pageContext.request.contextPath}/addproduct" method="post">
+                                <input type="hidden" name="productId" value="${product.name}"/>
+                                <input type="hidden" name="action" value="add"/>
+                                <button type="submit">В корзину</button>
+                            </form>
+                        </td>
+                    </sec:authorize>
+                </tr>
+            </c:forEach>
+        </table>
     </ul>
 </div>
 

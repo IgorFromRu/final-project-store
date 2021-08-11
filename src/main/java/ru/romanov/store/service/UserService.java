@@ -1,5 +1,6 @@
 package ru.romanov.store.service;
 
+import ru.romanov.store.entity.Product;
 import ru.romanov.store.entity.Role;
 import ru.romanov.store.entity.User;
 import ru.romanov.store.repository.RoleRepository;
@@ -72,5 +73,9 @@ public class UserService implements UserDetailsService {
     public List<User> usergtList(Long idMin) {
         return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
+    }
+
+    public List<Product> UsergtListProducts(User user){
+        return userRepository.findByUsername(user.getUsername()).getProductList();
     }
 }

@@ -1,14 +1,16 @@
 package ru.romanov.store.controller;
 
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import ru.romanov.store.entity.Product;
+import ru.romanov.store.entity.User;
 import ru.romanov.store.service.ProductService;
 import ru.romanov.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class AdminController {
@@ -59,5 +61,14 @@ public class AdminController {
     public String  gtProduct(@PathVariable("productId") Long productId, Model model) {
         model.addAttribute("allProducts", productService.productgtList(productId));
         return "adminproduct";
+    }
+
+    @PostMapping("/adminproduct/addproduct")
+    public String addProduct(@ModelAttribute("productForm") @Valid Product productForm, Model model){
+        if (!productService.saveProduct(productForm)){
+            model.addAttribute("usernameError", "Продукт с таким именем уже существует");
+            return "adminproduct";
+        }
+        return "redirect:/adminproduct";
     }
 }

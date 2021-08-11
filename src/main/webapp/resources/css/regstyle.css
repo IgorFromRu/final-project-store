@@ -33,3 +33,14 @@
     font-weight: bold; /* жирный текст */
     padding: 12px 20px; /* оступы для текста */
 }
+.addForm{
+    width:300px;
+    margin: auto; /* убираем отступы */
+    background-color: beige; /* фон заголовка */
+    color: black; /* цвет текста */
+    font-size: 14px; /* размер шрифта */
+    padding: 1px; /* отступы */
+    text-align: center; /* выравниваем текст по центру */
+    border-radius: 10px;
+    border-style: double;
+}

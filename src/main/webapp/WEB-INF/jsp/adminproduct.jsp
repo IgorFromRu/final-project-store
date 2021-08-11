@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/regstyle.css">
     <title>Админ</title>
 </head>
 <body>
@@ -37,6 +38,16 @@
         <a href="#">еще что-то</a>
     </div>
 </div>
+
+<div class="addForm">
+    <form method="POST" action="/adminproduct/addproduct" modelAttribute="productForm">
+        <h5>Название продукта</h5>
+        <input type="text" maxlength="25" size="40" placeholder="name" name="name" autofocus="true">
+        <input  type="text" maxlength="25" size="40" placeholder="price" name="price" autofocus="true">
+        <input  type="submit" value="Отправить">
+    </form>
+</div>
+
 <div class="info-block">
     <div>
         <table>
@@ -51,7 +62,7 @@
                     <td>${product.name}</td>
                     <td>${product.price}</td>
                     <td>
-                        <form action="${pageContext.request.contextPath}/admin" method="post">
+                        <form action="${pageContext.request.contextPath}/adminproduct" method="post">
                             <input type="hidden" name="productId" value="${product.id}"/>
                             <input type="hidden" name="action" value="delete"/>
                             <button type="submit">Delete</button>

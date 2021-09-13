@@ -1,11 +1,14 @@
 package ru.romanov.store.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -19,6 +22,10 @@ public class User implements UserDetails {
     private String username;
     @Size(min=2, message = "Не меньше 5 знаков")
     private String password;
+    @Size(min=2, message = "Не меньше 2 знаков")
+    private String firstName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateOfBirth;
     @Transient
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -102,5 +109,21 @@ public class User implements UserDetails {
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

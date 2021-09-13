@@ -27,17 +27,29 @@
     <div class="inp">
         <form:form method="POST" modelAttribute="userForm">
             <div>
-                <form:input class="pass" type="text" path="username" placeholder="Username"
+                <form:input class="pass" type="text" path="username" placeholder="Логин"
                             autofocus="true"></form:input>
                 <form:errors path="username"></form:errors>
                     ${usernameError}
             </div>
             <div>
-                <form:input class="pass" type="password" path="password" placeholder="Password"></form:input>
+                <form:input class="pass" type="text" path="firstName" placeholder="Имя"></form:input>
+                <form:errors path="username"></form:errors>
+                    ${usernameError}
+            </div>
+            <div>
+                <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения"></form:input>
+                <form:errors path="username"></form:errors>
+                    ${usernameError}
+            </div>
+            <div>
+                <form:input class="pass" type="password" path="password" placeholder="Пароль"></form:input>
+                <form:errors path="username"></form:errors>
+                    ${usernameError}
             </div>
             <div>
                 <form:input class="pass" type="password" path="passwordConfirm"
-                            placeholder="Confirm your password"></form:input>
+                            placeholder="Подтвердите пароль"></form:input>
                 <form:errors path="password"></form:errors>
                     ${passwordError}
             </div>

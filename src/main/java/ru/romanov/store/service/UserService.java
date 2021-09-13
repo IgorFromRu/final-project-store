@@ -1,5 +1,6 @@
 package ru.romanov.store.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.romanov.store.entity.Product;
 import ru.romanov.store.entity.Role;
 import ru.romanov.store.entity.User;
@@ -28,7 +29,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
-    ProductRepository productRepository;
+    ProductService productService;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -82,7 +83,22 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(user.getUsername()).getProductList();
     }
 
-    public boolean addProductUserList(User user, String productName) {
+    @Transactional
+    public boolean addProductUserList(User user, Long productId) {
+        Product productDB = productService.findProductById(productId);
+        em.createNativeQuery("INSERT INTO t_user_product_list (user_id, product_list_id) VALUES (?,?)")
+                .setParameter(1, user.getId())
+                .setParameter(2, productDB.getId())
+                .executeUpdate();
+        return true;
+    }
+
+    @Transactional
+    public boolean deleteProductUserList(User user, Long productId) {
+        em.createNativeQuery("DELETE FROM  t_user_product_list WHERE user_id = ? AND product_list_id = ? limit 1;")
+                .setParameter(1, user.getId())
+                .setParameter(2, productId)
+                .executeUpdate();
         return true;
     }
 }

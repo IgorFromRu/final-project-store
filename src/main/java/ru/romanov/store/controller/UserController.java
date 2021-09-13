@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.romanov.store.entity.Product;
 import ru.romanov.store.entity.User;
 import ru.romanov.store.service.ProductService;
 import ru.romanov.store.service.UserService;
@@ -25,9 +26,17 @@ public class UserController {
 
     @PostMapping("/addproduct")
     public String addProduct(@AuthenticationPrincipal User user,
-                             @RequestParam(required = true, defaultValue = "" ) String productId,
+                             @RequestParam(required = true, defaultValue = "" ) Long productId,
                              Model model) {
         userService.addProductUserList(user, productId);
+        return "redirect:/home";
+    }
+
+    @PostMapping("/deleteproduct")
+    public String deleteProduct(@AuthenticationPrincipal User user,
+                             @RequestParam(required = true, defaultValue = "" ) Long productId,
+                             Model model) {
+        userService.deleteProductUserList(user, productId);
         return "redirect:/userlistproduct";
     }
 }

@@ -44,13 +44,13 @@
                 <tr>
                     <td>${product.name}</td>
                     <td>${product.price}</td>
-<%--                    <td>--%>
-<%--                        <form action="${pageContext.request.contextPath}/userlistproduct" method="post">--%>
-<%--                            <input type="hidden" name="productId" value="${product.id}"/>--%>
-<%--                            <input type="hidden" name="action" value="delete"/>--%>
-<%--                            <button type="submit">Delete</button>--%>
-<%--                        </form>--%>
-<%--                    </td>--%>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/deleteproduct" method="post">
+                            <input type="hidden" name="productId" value="${product.id}"/>
+                            <input type="hidden" name="action" value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

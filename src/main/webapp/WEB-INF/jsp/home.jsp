@@ -44,7 +44,7 @@
                     <sec:authorize access="isAuthenticated()">
                         <td>
                             <form action="${pageContext.request.contextPath}/addproduct" method="post">
-                                <input type="hidden" name="productId" value="${product.name}"/>
+                                <input type="hidden" name="productId" value="${product.id}"/>
                                 <input type="hidden" name="action" value="add"/>
                                 <button type="submit">В корзину</button>
                             </form>

@@ -24,19 +24,14 @@ public class UserController {
         return "userlistproduct";
     }
 
-    @PostMapping("/addproduct")
-    public String addProduct(@AuthenticationPrincipal User user,
-                             @RequestParam(required = true, defaultValue = "" ) Long productId,
-                             Model model) {
-        userService.addProductUserList(user, productId);
-        return "redirect:/home";
-    }
-
     @PostMapping("/deleteproduct")
     public String deleteProduct(@AuthenticationPrincipal User user,
                              @RequestParam(required = true, defaultValue = "" ) Long productId,
                              Model model) {
-        userService.deleteProductUserList(user, productId);
+        if (!userService.deleteProductUserList(user, productId)){
+            model.addAttribute("deleteError", "Продукт не удалился");
+            return "redirect:/userlistproduct";
+        }
         return "redirect:/userlistproduct";
     }
 }

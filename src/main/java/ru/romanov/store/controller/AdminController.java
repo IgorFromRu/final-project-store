@@ -66,9 +66,12 @@ public class AdminController {
     @PostMapping("/adminproduct/addproduct")
     public String addProduct(@ModelAttribute("productForm") @Valid Product productForm, Model model){
         if (!productService.saveProduct(productForm)){
-            model.addAttribute("usernameError", "Продукт с таким именем уже существует");
-            return "adminproduct";
+            model.addAttribute("productNameError", "Продукт с таким именем уже существует");
+            return "redirect:/adminproduct";
         }
         return "redirect:/adminproduct";
     }
 }
+
+
+ 

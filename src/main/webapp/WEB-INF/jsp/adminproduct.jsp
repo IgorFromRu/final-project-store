@@ -37,21 +37,21 @@
     </button>
     <div class="dropdown-content">
         <a href="admin">Управление пользователями</a>
-        <a href="product">Управление товарами</a>
+        <a href="adminproduct">Управление товарами</a>
         <a href="#">еще что-то</a>
     </div>
 </div>
 
 <div class="addForm">
     <form method="POST" action="/adminproduct/addproduct" modelAttribute="productForm">
-        <h5>Название продукта</h5>
+        <h3>Добавить продукт</h3>
         <input type="text" maxlength="25" size="40" placeholder="name" name="name" autofocus="true">
         <input  type="text" maxlength="25" size="40" placeholder="price" name="price" autofocus="true">
         <input  type="submit" value="Отправить">
     </form>
 </div>
-
 <div class="info-block">
+    <td>${productNameError}</td>
     <div>
         <table>
             <thead>

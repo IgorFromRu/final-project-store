@@ -23,7 +23,7 @@ public class ProductService {
         Product product = productRepository.findByName(name);
 
         if (product == null) {
-            throw new UsernameNotFoundException("product not found");
+            throw new UsernameNotFoundException("Продукт не найден");
         }
 
         return product;

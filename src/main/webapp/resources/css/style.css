@@ -109,7 +109,6 @@ button:hover, input[type="submit"]:hover {
     text-transform: uppercase; /* все символы заглавные */
 }
 .dropdown {
-    background-color: #282830;
     float: left;
     overflow: hidden;
 }

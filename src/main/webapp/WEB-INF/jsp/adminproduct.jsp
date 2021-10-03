@@ -17,7 +17,16 @@
     <a href="contacts">Контакты</a>
     <a href="about">О нас</a>
     <sec:authorize access="hasRole('ADMIN')">
-        <a class="active" href="/admin">Админ</a>
+        <div class="dropdown">
+            <button class="dropbtn">Админ
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="admin">Управление пользователями</a>
+                <a href="adminproduct">Управление товарами</a>
+                <a href="#">еще что-то</a>
+            </div>
+        </div>
     </sec:authorize>
     <sec:authorize access="!isAuthenticated()">
         <a class="reg" href="registration">Регистрация</a>

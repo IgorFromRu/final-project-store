@@ -11,6 +11,7 @@ public class Product{
     private Long id;
     private String name;
     private Long price;
+    private String fileName;
 
     public Product() {
     }
@@ -45,4 +46,11 @@ public class Product{
         this.price = price;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 }

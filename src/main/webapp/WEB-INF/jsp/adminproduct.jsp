@@ -52,10 +52,11 @@
 </div>
 
 <div class="addForm">
-    <form method="POST" action="/adminproduct/addproduct" modelAttribute="productForm">
+    <form method="POST" action="/adminproduct/addproduct" modelAttribute="productForm" enctype="multipart/form-data">
         <h3>Добавить продукт</h3>
         <input type="text" maxlength="25" size="40" placeholder="name" name="name" autofocus="true">
         <input  type="text" maxlength="25" size="40" placeholder="price" name="price" autofocus="true">
+        <input type="file" name="file">
         <input  type="submit" value="Отправить">
     </form>
 </div>

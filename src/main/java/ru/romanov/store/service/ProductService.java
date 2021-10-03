@@ -1,6 +1,7 @@
 package ru.romanov.store.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.romanov.store.entity.Product;
@@ -8,6 +9,7 @@ import ru.romanov.store.repository.ProductRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,8 @@ public class ProductService {
     private EntityManager em;
     @Autowired
     ProductRepository productRepository;
+    @Value("${upload.path}")
+    private String uploadPath;
 
     public Product loadProductByName(String name) {
         Product product = productRepository.findByName(name);
@@ -52,8 +56,10 @@ public class ProductService {
     }
 
     public boolean deleteProduct(Long productId) {
+        String nameFile = productRepository.findById(productId).get().getFileName();
         if (productRepository.findById(productId).isPresent()) {
             productRepository.deleteById(productId);
+            new File(uploadPath + "/" + nameFile).delete();
             return true;
         }
         return false;

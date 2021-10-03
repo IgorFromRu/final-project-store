@@ -45,14 +45,16 @@
             <thead>
             <th>ID</th>
             <th>UserName</th>
-            <th>Password</th>
+            <th>firstName</th>
+            <th>dateOfBirth</th>
             <th>Roles</th>
             </thead>
             <c:forEach items="${allUsers}" var="user">
                 <tr>
                     <td>${user.id}</td>
                     <td>${user.username}</td>
-                    <td>${user.password}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.dateOfBirth}</td>
                     <td>
                         <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
                     </td>

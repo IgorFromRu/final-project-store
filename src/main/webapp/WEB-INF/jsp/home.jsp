@@ -52,7 +52,7 @@
             </thead>
             <c:forEach items="${allProducts}" var="product">
                 <tr>
-                    <td><img src="${contextPath}/resources/css/images/products/${product.fileName}" alt="Фото товара"  width='240' height='240'></td>
+                    <td><img src="${contextPath}/resources/css/images/products/imgproducts/${product.fileName}" alt="Фото товара"  width='240' height='240'></td>
                     <td>${product.name}</td>
                     <td style="width:100px" >${product.description}</td>
                     <td>${product.price}</td>

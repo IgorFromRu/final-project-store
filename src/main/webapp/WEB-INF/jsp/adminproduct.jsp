@@ -54,8 +54,9 @@
 <div class="addForm">
     <form method="POST" action="/adminproduct/addproduct" modelAttribute="productForm" enctype="multipart/form-data">
         <h3>Добавить продукт</h3>
-        <input type="text" maxlength="25" size="40" placeholder="name" name="name" autofocus="true">
-        <input  type="text" maxlength="25" size="40" placeholder="price" name="price" autofocus="true">
+        <input type="text" maxlength="25" size="40" placeholder="Название" name="name" autofocus="true">
+        <input  type="text" maxlength="25" size="40" placeholder="Цена" name="price" autofocus="true">
+        <textarea name="description" placeholder="Описание товара" cols="30" rows="4"></textarea>
         <input type="file" name="file">
         <input  type="submit" value="Отправить">
     </form>

@@ -43,12 +43,16 @@
     <ul>
         <table>
             <thead>
-            <th>Name</th>
-            <th>Price</th>
+            <th>Фото</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Цена</th>
             </thead>
             <c:forEach items="${allProducts}" var="product">
                 <tr>
+                    <td><img src="${contextPath}/resources/css/images/products/${product.fileName}" alt="Фото товара"  width='240' height='240'></td>
                     <td>${product.name}</td>
+                    <td>${product.description}</td>
                     <td>${product.price}</td>
                     <sec:authorize access="isAuthenticated()">
                         <td>

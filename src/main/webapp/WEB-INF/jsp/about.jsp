@@ -34,7 +34,7 @@
     <sec:authorize access="isAuthenticated()">
         <a class="reg" href="/logout">Выйти</a>
     </sec:authorize>
-    <a class="reg" href="" >${pageContext.request.userPrincipal.name}</a>
+    <a class="reg" href="/userprofile" >${pageContext.request.userPrincipal.name}</a>
     <sec:authorize access="isAuthenticated()">
         <a class="reg" href="userlistproduct">Корзина</a>
     </sec:authorize>

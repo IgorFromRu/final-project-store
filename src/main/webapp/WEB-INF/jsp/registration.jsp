@@ -34,24 +34,16 @@
             </div>
             <div>
                 <form:input class="pass" type="text" path="firstName" placeholder="Имя"></form:input>
-                <form:errors path="username"></form:errors>
-                    ${usernameError}
             </div>
             <div>
                 <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения"></form:input>
-                <form:errors path="username"></form:errors>
-                    ${usernameError}
             </div>
             <div>
                 <form:input class="pass" type="password" path="password" placeholder="Пароль"></form:input>
-                <form:errors path="username"></form:errors>
-                    ${usernameError}
             </div>
             <div>
                 <form:input class="pass" type="password" path="passwordConfirm"
                             placeholder="Подтвердите пароль"></form:input>
-                <form:errors path="password"></form:errors>
-                    ${passwordError}
             </div>
             <button class="btn" type="submit">Зарегистрироваться</button>
         </form:form>

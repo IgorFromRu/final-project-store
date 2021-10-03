@@ -34,4 +34,10 @@ public class UserController {
         }
         return "redirect:/userlistproduct";
     }
+
+    @GetMapping("/userprofile")
+    public String userProfile(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("user", userService.findUserById(user.getId()));
+        return "userprofile";
+    }
 }

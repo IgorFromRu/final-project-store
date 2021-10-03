@@ -146,3 +146,14 @@ button:hover, input[type="submit"]:hover {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.profForm {
+    width:300px;
+    margin: 10% auto; /* убираем отступы */
+    background-color: beige; /* фон заголовка */
+    border-radius: 10px;
+    color: black; /* цвет текста */
+    font-size: 20px; /* размер шрифта */
+    padding: 20px; /* отступы */
+    text-align: left; /* выравниваем текст по центру */
+    border-style: double;
+}

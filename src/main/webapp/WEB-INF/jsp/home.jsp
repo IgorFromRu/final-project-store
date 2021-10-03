@@ -34,7 +34,9 @@
     <sec:authorize access="isAuthenticated()">
         <a class="reg" href="/logout">Выйти</a>
     </sec:authorize>
-    <a class="reg" href="/userprofile" >${pageContext.request.userPrincipal.name}</a>
+    <sec:authorize access="isAuthenticated()">
+        <a class="reg" href="/userprofile" >${pageContext.request.userPrincipal.name}</a>
+    </sec:authorize>
     <sec:authorize access="isAuthenticated()">
     <a class="reg" href="userlistproduct">Корзина</a>
     </sec:authorize>
@@ -52,7 +54,7 @@
                 <tr>
                     <td><img src="${contextPath}/resources/css/images/products/${product.fileName}" alt="Фото товара"  width='240' height='240'></td>
                     <td>${product.name}</td>
-                    <td>${product.description}</td>
+                    <td style="width:100px" >${product.description}</td>
                     <td>${product.price}</td>
                     <sec:authorize access="isAuthenticated()">
                         <td>

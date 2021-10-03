@@ -35,20 +35,12 @@
     <sec:authorize access="isAuthenticated()">
         <a class="reg" href="/logout">Выйти</a>
     </sec:authorize>
-    <a class="reg" href="/userprofile" >${pageContext.request.userPrincipal.name}</a>
+    <sec:authorize access="isAuthenticated()">
+        <a class="reg" href="/userprofile" >${pageContext.request.userPrincipal.name}</a>
+    </sec:authorize>
     <sec:authorize access="isAuthenticated()">
         <a class="reg" href="userlistproduct">Корзина</a>
     </sec:authorize>
-</div>
-<div class="dropdown">
-    <button class="dropbtn">Список
-        <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-        <a href="admin">Управление пользователями</a>
-        <a href="adminproduct">Управление товарами</a>
-        <a href="#">еще что-то</a>
-    </div>
 </div>
 
 <div class="addForm">
@@ -56,6 +48,7 @@
         <h3>Добавить продукт</h3>
         <input type="text" maxlength="25" size="40" placeholder="Название" name="name" autofocus="true">
         <input  type="text" maxlength="25" size="40" placeholder="Цена" name="price" autofocus="true">
+        <input  type="text" maxlength="25" size="40" placeholder="Тип" name="Type" autofocus="true">
         <textarea name="description" placeholder="Описание товара" cols="30" rows="4"></textarea>
         <input type="file" name="file">
         <input  type="submit" value="Отправить">

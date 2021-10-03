@@ -46,10 +46,11 @@
         <table>
             <thead>
             <th>ID</th>
-            <th>UserName</th>
-            <th>firstName</th>
-            <th>dateOfBirth</th>
-            <th>Roles</th>
+            <th>Почта</th>
+            <th>Имя</th>
+            <th>Дата рождения</th>
+            <th>Пароль</th>
+            <th>Роль</th>
             </thead>
             <c:forEach items="${allUsers}" var="user">
                 <tr>
@@ -57,6 +58,7 @@
                     <td>${user.username}</td>
                     <td>${user.firstName}</td>
                     <td>${user.dateOfBirth}</td>
+                    <td>${user.password}</td>
                     <td>
                         <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
                     </td>

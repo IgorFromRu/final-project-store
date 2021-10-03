@@ -27,7 +27,7 @@
     <div class="inp">
         <form:form method="POST" modelAttribute="userForm">
             <div>
-                <form:input class="pass" type="email" path="username" placeholder="Email"
+                <form:input class="pass" type="text" path="username" placeholder="Логин"
                             autofocus="true"></form:input>
                 <form:errors path="username"></form:errors>
                     ${usernameError}

@@ -48,12 +48,19 @@
     <div>
         <table>
             <thead>
-            <th>Name</th>
-            <th>Price</th>
+            <th>Фото</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Цена</th>
             </thead>
             <c:forEach items="${allProductsOfUser}" var="product">
                 <tr>
+                    <td><div class="img-product">
+                        <img src="${contextPath}/resources/css/images/products/imgproducts/${product.fileName}"
+                             alt="Фото товара" width='150' height='150'>
+                    </div></td>
                     <td>${product.name}</td>
+                    <td>${product.description}</td>
                     <td>${product.price}</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/deleteproduct" method="post">

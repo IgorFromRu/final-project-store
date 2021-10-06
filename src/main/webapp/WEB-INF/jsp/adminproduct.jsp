@@ -61,12 +61,16 @@
             <thead>
             <th>ID</th>
             <th>Name</th>
+            <th>Description</th>
+            <th>type</th>
             <th>Price</th>
             </thead>
             <c:forEach items="${allProducts}" var="product">
                 <tr>
                     <td>${product.id}</td>
                     <td>${product.name}</td>
+                    <td>${product.description}</td>
+                    <td>${product.type}</td>
                     <td>${product.price}</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/adminproduct" method="post">

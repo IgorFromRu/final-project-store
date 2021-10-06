@@ -7,15 +7,16 @@ ul li {
     display : inline-block;
     width : 250px;
     height: 250px;
-    margin-bottom: 10px;
-    background: white;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    background: beige;
     vertical-align: top;
     text-align: center;
     line-height: normal;
     border-radius: 5px;
-    border-style: double;
 }
 .img-product{
-    width : 250px;
-    height: 200px;
+    border-style: double;
+    border-color: black;
+    border-radius: 5px;
 }

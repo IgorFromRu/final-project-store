@@ -57,19 +57,19 @@
 <div class="info-block">
     <td>${productNameError}</td>
     <div>
-        <table>
+        <table width="100%">
             <thead>
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
-            <th>type</th>
+            <th>Type</th>
             <th>Price</th>
             </thead>
             <c:forEach items="${allProducts}" var="product">
                 <tr>
                     <td>${product.id}</td>
                     <td>${product.name}</td>
-                    <td>${product.description}</td>
+                    <td><div style="word-wrap: break-word;">${product.description}</div></td>
                     <td>${product.type}</td>
                     <td>${product.price}</td>
                     <td>

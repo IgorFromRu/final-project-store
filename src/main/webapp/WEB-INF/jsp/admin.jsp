@@ -43,13 +43,12 @@
 </div>
 <div class="info-block">
     <div>
-        <table>
+        <table width="100%">
             <thead>
             <th>ID</th>
             <th>Почта</th>
             <th>Имя</th>
             <th>Дата рождения</th>
-            <th>Пароль</th>
             <th>Роль</th>
             </thead>
             <c:forEach items="${allUsers}" var="user">
@@ -58,7 +57,6 @@
                     <td>${user.username}</td>
                     <td>${user.firstName}</td>
                     <td>${user.dateOfBirth}</td>
-                    <td>${user.password}</td>
                     <td>
                         <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
                     </td>

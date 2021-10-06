@@ -46,9 +46,9 @@
 
 <div class="info-block">
     <div>
-        <table>
+        <table width="100%">
             <thead>
-            <th>Фото</th>
+            <th width ='200'>Фото</th>
             <th>Название</th>
             <th>Описание</th>
             <th>Цена</th>
@@ -60,7 +60,7 @@
                              alt="Фото товара" width='150' height='150'>
                     </div></td>
                     <td>${product.name}</td>
-                    <td>${product.description}</td>
+                    <td><div style="word-wrap: break-word;">${product.description}</div></td>
                     <td>${product.price}</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/deleteproduct" method="post">

@@ -157,3 +157,7 @@ button:hover, input[type="submit"]:hover {
     text-align: left; /* выравниваем текст по центру */
     border-style: double;
 }
+table {
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 100%; /* Ширина таблицы */
+}

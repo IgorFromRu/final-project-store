@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "t_product")
+@Table(name = "product")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +19,7 @@ public class Product{
     private Long id;
     private String name;
     private Long price;
+    private String typeName;
     private String description;
     private String fileName;
-    private String type;
 }

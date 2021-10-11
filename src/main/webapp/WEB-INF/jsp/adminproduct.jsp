@@ -48,7 +48,7 @@
         <h3>Добавить продукт</h3>
         <input type="text" maxlength="25" size="40" placeholder="Название" name="name" autofocus="true">
         <input  type="text" maxlength="25" size="40" placeholder="Цена" name="price" autofocus="true">
-        <input  type="text" maxlength="25" size="40" placeholder="Тип" name="Type" autofocus="true">
+        <input  type="text" maxlength="25" size="40" placeholder="Тип" name="type" autofocus="true">
         <textarea name="description" placeholder="Описание товара" cols="30" rows="4"></textarea>
         <input type="file" name="file">
         <input  type="submit" value="Отправить">
@@ -70,7 +70,7 @@
                     <td>${product.id}</td>
                     <td>${product.name}</td>
                     <td><div style="word-wrap: break-word;">${product.description}</div></td>
-                    <td>${product.type}</td>
+                    <td> ${type.nameType}</td>
                     <td>${product.price}</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/adminproduct" method="post">

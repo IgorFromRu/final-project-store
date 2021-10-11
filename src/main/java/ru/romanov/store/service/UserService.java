@@ -1,18 +1,17 @@
 package ru.romanov.store.service;
 
-import org.springframework.transaction.annotation.Transactional;
-import ru.romanov.store.entity.Product;
-import ru.romanov.store.entity.Role;
-import ru.romanov.store.entity.User;
-import ru.romanov.store.repository.ProductRepository;
-import ru.romanov.store.repository.RoleRepository;
-import ru.romanov.store.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.romanov.store.entity.Product;
+import ru.romanov.store.entity.Role;
+import ru.romanov.store.entity.User;
+import ru.romanov.store.repository.RoleRepository;
+import ru.romanov.store.repository.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,7 +33,7 @@ public class UserService implements UserDetailsService {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
 
         if (user == null) {
@@ -46,14 +45,14 @@ public class UserService implements UserDetailsService {
 
     public User findUserById(Long userId) {
         Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElse(new User());
+        return userFromDb.orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-    public List<User> allUsers() {
+    public List<User> findAllUsers() {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
+    public boolean createUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
 
         if (userFromDB != null) {
@@ -74,19 +73,14 @@ public class UserService implements UserDetailsService {
         return false;
     }
 
-    public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
-    }
-
-    public List<Product> UsergtListProducts(User user){
+    public List<Product> getUserListProducts(User user) {
         return userRepository.findByUsername(user.getUsername()).getProductList();
     }
 
     @Transactional
-    public boolean addProductUserList(User user, Long productId) {
+    public boolean addProductToUserList(User user, Long productId) {
         Product productDB = productService.findProductById(productId);
-        em.createNativeQuery("INSERT INTO t_user_product_list (user_id, product_list_id) VALUES (?,?)")
+        em.createNativeQuery("INSERT INTO user_product_list (user_id, product_list_id) VALUES (?,?)")
                 .setParameter(1, user.getId())
                 .setParameter(2, productDB.getId())
                 .executeUpdate();
@@ -94,8 +88,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public boolean deleteProductUserList(User user, Long productId) {
-        em.createNativeQuery("DELETE FROM  t_user_product_list WHERE user_id = ? AND product_list_id = ? limit 1;")
+    public boolean deleteProductFromUserList(User user, Long productId) {
+        em.createNativeQuery("DELETE FROM  user_product_list WHERE user_id = ? AND product_list_id = ? limit 1;")
                 .setParameter(1, user.getId())
                 .setParameter(2, productId)
                 .executeUpdate();

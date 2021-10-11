@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/regstyle.css">
+    <script src="${contextPath}/resources/js/main.js"></script>
     <title>Регистрация</title>
 </head>
 
@@ -26,26 +27,38 @@
     <h1>Регистрация</h1>
     <div class="inp">
         <form:form method="POST" modelAttribute="userForm">
-            <div>
-                <form:input class="pass" type="email" path="username" placeholder="Email"
-                            autofocus="true"></form:input>
-                <form:errors path="username"></form:errors>
+            <fieldset>
+                    <form:errors path="username"></form:errors>
                     ${usernameError}
-            </div>
-            <div>
-                <form:input class="pass" type="text" path="firstName" placeholder="Имя"></form:input>
-            </div>
-            <div>
-                <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения"></form:input>
-            </div>
-            <div>
-                <form:input class="pass" type="password" path="password" placeholder="Пароль"></form:input>
-            </div>
-            <div>
-                <form:input class="pass" type="password" path="passwordConfirm"
-                            placeholder="Подтвердите пароль"></form:input>
-            </div>
-            <button class="btn" type="submit">Зарегистрироваться</button>
+                <div>
+                    <form:input class="pass" type="email" path="username" placeholder="Email"
+                                autofocus="true"></form:input>
+                </div>
+                <div>
+                    <form:input class="pass" type="text" path="firstName" placeholder="Имя"></form:input>
+                </div>
+                <div>
+                    <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения"></form:input>
+                </div>
+                <div>
+                    <input class="pass" name="password" id="password" type="password"
+                                placeholder="Подтвердите пароль" onkeyup='check();'/>
+                </div>
+                <div>
+                    <input class="pass" type="password" name="confirm_password" id="confirm_password"
+                                placeholder="Пароль" onkeyup='check();'/>
+                    <span id='message'></span>
+                </div>
+
+<%--                    <form:input class="pass" type="password" path="password" placeholder="Пароль"--%>
+<%--                                id="password"></form:input>--%>
+<%--                </div>--%>
+<%--                <div>--%>
+<%--                    <form:input class="pass" type="password" path="passwordConfirm"--%>
+<%--                                placeholder="Подтвердите пароль" id="confirm_password"></form:input>--%>
+                </div>
+                <button class="btn" type="submit">Зарегистрироваться</button>
+            </fieldset>
         </form:form>
     </div>
 </div>

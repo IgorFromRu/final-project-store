@@ -43,6 +43,7 @@
     </sec:authorize>
 </div>
 <div class="info-block">
+
     <ul>
         <c:forEach items="${allProducts}" var="product">
             <li>

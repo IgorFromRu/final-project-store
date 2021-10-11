@@ -1,11 +1,9 @@
 package ru.romanov.store.controller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.romanov.store.entity.Product;
-import ru.romanov.store.entity.User;
 import ru.romanov.store.service.ProductService;
 import ru.romanov.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String userList(Model model) {
-        model.addAttribute("allUsers", userService.allUsers());
+        model.addAttribute("allUsers", userService.findAllUsers());
         return "admin";
     }
 
@@ -42,9 +40,9 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/gt/{userId}")
-    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
-        model.addAttribute("allUsers", userService.usergtList(userId));
+    @GetMapping("/admin/user/{userId}")
+    public String  findUserById(@PathVariable("userId") Long userId, Model model) {
+        model.addAttribute("allUsers", userService.findUserById(userId));
         return "admin";
     }
 
@@ -55,7 +53,7 @@ public class AdminController {
     }
 
     @PostMapping("/adminproduct")
-    public String  deleteProducts(@RequestParam(required = true, defaultValue = "" ) Long productId,
+    public String  deleteProduct(@RequestParam(required = true, defaultValue = "" ) Long productId,
                               @RequestParam(required = true, defaultValue = "" ) String action,
                               Model model) {
         if (action.equals("delete")){
@@ -64,14 +62,14 @@ public class AdminController {
         return "redirect:/adminproduct";
     }
 
-    @GetMapping("/adminproduct/gt/{productId}")
-    public String  gtProduct(@PathVariable("productId") Long productId, Model model) {
-        model.addAttribute("allProducts", productService.productgtList(productId));
+    @GetMapping("/adminproduct/productlist")
+    public String  findAllProduct( Model model) {
+        model.addAttribute("allProducts", productService.allProducts());
         return "adminproduct";
     }
 
     @PostMapping("/adminproduct/addproduct")
-    public String addProduct(@ModelAttribute("productForm")
+    public String createProduct(@ModelAttribute("productForm")
                              @Valid Product productForm,
                              @RequestParam("file") MultipartFile file,
                              Model model) throws IOException {

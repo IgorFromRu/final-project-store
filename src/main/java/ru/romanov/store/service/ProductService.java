@@ -23,19 +23,9 @@ public class ProductService {
     @Value("${upload.path}")
     private String uploadPath;
 
-    public Product loadProductByName(String name) {
-        Product product = productRepository.findByName(name);
-
-        if (product == null) {
-            throw new UsernameNotFoundException("Продукт не найден");
-        }
-
-        return product;
-    }
-
     public Product findProductById(Long productId) {
         Optional<Product> productFromDb = productRepository.findById(productId);
-        return productFromDb.orElse(new Product());
+        return productFromDb.orElseThrow(() -> new UsernameNotFoundException("Продукт не найден"));
     }
 
     public List<Product> allProducts() {
@@ -49,24 +39,17 @@ public class ProductService {
             return false;
         }
 
-        product.setName(product.getName());
-        product.setPrice(product.getPrice());
         productRepository.save(product);
         return true;
     }
 
     public boolean deleteProduct(Long productId) {
-        String nameFile = productRepository.findById(productId).get().getFileName();
-        if (productRepository.findById(productId).isPresent()) {
+        Optional<Product> product = productRepository.findById(productId);
+        if (product.isPresent()) {
+            new File(uploadPath + "/" + product.get().getFileName()).delete();
             productRepository.deleteById(productId);
-            new File(uploadPath + "/" + nameFile).delete();
             return true;
         }
         return false;
-    }
-
-    public List<Product> productgtList(Long idMin) {
-        return em.createQuery("SELECT p FROM Product p WHERE p.id > :paramId", Product.class)
-                .setParameter("paramId", idMin).getResultList();
     }
 }

@@ -10,28 +10,25 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "t_user")
+@Table(name = "user")
 @Data
 @NoArgsConstructor
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min=2, message = "Не меньше 5 знаков")
+    @Size(min = 5, message = "Не меньше 5 знаков")
     private String username;
-    @Size(min=2, message = "Не меньше 5 знаков")
+    @Size(min = 8, message = "Не меньше 8 знаков")
     private String password;
-    @Size(min=2, message = "Не меньше 2 знаков")
+    @Size(min = 2, message = "Не меньше 2 знаков")
     private String firstName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
-    @Transient
-    private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
     @ManyToMany(fetch = FetchType.EAGER)

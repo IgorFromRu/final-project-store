@@ -3,7 +3,6 @@ package ru.romanov.store.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +10,6 @@ import ru.romanov.store.entity.User;
 import ru.romanov.store.service.UserService;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Size;
 
 
 @Controller
@@ -33,8 +31,7 @@ public class RegLogOutController {
         try {
             userService.createUser(userForm);
             return "redirect:/login";
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             model.addAttribute("usernameError", e.getMessage());
             return "registration";
         }

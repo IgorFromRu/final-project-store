@@ -24,9 +24,12 @@
     <div class="inp">
         <form method="POST" action="/login" name="logForm" onsubmit="return loginForm()">
             <span id='message'></span>
+            <div c:if test="${param.error}">
+                Неправильный логин или пароль
+            </div>
             <input class="pass" type="text" maxlength="25" size="40" placeholder="Username" name="username" autofocus="true">
             <input class="pass" type="password" maxlength="25" size="40" placeholder="Password" name="password">
-            <input class="btn" type="submit" value="Отправить">
+            <input class="btn" type="submit" value="Войти">
         </form>
     </div>
 </div>

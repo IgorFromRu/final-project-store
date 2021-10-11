@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/regstyle.css">
-    <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/regLogForm.js"></script>
     <title>Регистрация</title>
 </head>
 

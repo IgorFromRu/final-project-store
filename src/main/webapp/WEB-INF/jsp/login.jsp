@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/regstyle.css">
+    <script src="${contextPath}/resources/js/regLogForm.js"></script>
     <title>Регистрация</title>
 </head>
 <body>
@@ -21,7 +22,8 @@
 <div class="regForm">
     <h1>Вход на сайт</h1>
     <div class="inp">
-        <form method="POST" action="/login">
+        <form method="POST" action="/login" name="logForm" onsubmit="return loginForm()">
+            <span id='message'></span>
             <input class="pass" type="text" maxlength="25" size="40" placeholder="Username" name="username" autofocus="true">
             <input class="pass" type="password" maxlength="25" size="40" placeholder="Password" name="password">
             <input class="btn" type="submit" value="Отправить">

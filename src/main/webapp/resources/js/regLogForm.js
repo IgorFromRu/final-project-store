@@ -34,3 +34,12 @@ function validateForm() {
         return false;
     }
 }
+function loginForm(){
+    var username = document.forms["logForm"]["username"].value;
+    var password = document.forms["logForm"]["password"].value;
+    if (username === "" ||
+        password === ""){
+        document.getElementById('message').innerHTML = 'Заполните все поля';
+        return false;
+    }
+}

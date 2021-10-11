@@ -26,19 +26,19 @@
 <div class="regForm">
     <h1>Регистрация</h1>
     <div class="inp">
-        <form:form method="POST" modelAttribute="userForm">
+        <form:form method="POST" modelAttribute="userForm" onsubmit="return validateForm()">
                 <div>
                     ${usernameError}
                 </div>
                 <div>
-                    <form:input class="pass" type="text" path="username" placeholder="Имя"
-                             autofocus="true" title="Please provide only a Best Startup Ever corporate e-mail address"></form:input>
+                    <form:input class="pass" type="text" path="username" placeholder="Имя" name="username"
+                             autofocus="true"></form:input>
                 </div>
                 <div>
-                    <form:input class="pass" type="email" path="email" placeholder="Email"></form:input>
+                    <form:input class="pass" type="email" path="email" placeholder="Email" name="email"></form:input>
                 </div>
                 <div>
-                    <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения"></form:input>
+                    <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения" name="dateOfBirth"></form:input>
                 </div>
                 <div>
                     <input class="pass" name="password" id="password" type="password"

@@ -40,12 +40,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/id/{userId}")
-    public String  findUserById(@PathVariable("userId") Long userId, Model model) {
-        model.addAttribute("allUsers", userService.findUserById(userId));
-        return "admin";
-    }
-
     @GetMapping("/adminproduct")
     public String productList(Model model) {
         model.addAttribute("allProducts", productService.allProducts());

@@ -35,34 +35,31 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
-
         if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("Пользователь не найден");
         }
-
         return user;
     }
 
     public User findUserById(Long userId) {
         Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return userFromDb.orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
     }
 
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
 
-    public boolean createUser(User user) {
-        User userFromDB = userRepository.findByUsername(user.getUsername());
-
-        if (userFromDB != null) {
-            return false;
+    public User createUser(User user) {
+        User usersFromDb = userRepository.findByUsernameOrEmail(user.getUsername(), user.getEmail());
+        if (usersFromDb != null) {
+            throw new IllegalArgumentException("Пользователь с таким именем или почтой уже существует");
         }
 
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return true;
+        return user;
     }
 
     public boolean deleteUser(Long userId) {

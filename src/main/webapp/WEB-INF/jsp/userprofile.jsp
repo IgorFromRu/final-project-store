@@ -45,10 +45,10 @@
 </div>
 
 <div class="profForm">
-    <p>Login</p>
-    <p>${user.username}</p>
     <p>Имя</p>
-    <p>${user.firstName}</p>
+    <p>${user.username}</p>
+    <p>Почта</p>
+    <p>${user.email}</p>
     <p>Дата рождения</p>
     <p>${user.dateOfBirth}</p>
 </div>

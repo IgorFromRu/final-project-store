@@ -28,15 +28,15 @@ public class RegLogOutController {
     }
 
     @PostMapping("/registration")
-    public String createUser(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-        if (!userService.createUser(userForm)) {
-            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "registration";
-        }
+    public String createUser(@ModelAttribute("userForm") @Valid User userForm, Model model) {
 
-        return "redirect:/login";
+        try {
+            userService.createUser(userForm);
+            return "redirect:/login";
+        }
+        catch (IllegalArgumentException e){
+            model.addAttribute("usernameError", e.getMessage());
+            return "registration";
+        }
     }
 }

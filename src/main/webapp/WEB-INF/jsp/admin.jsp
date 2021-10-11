@@ -55,7 +55,7 @@
                 <tr>
                     <td>${user.id}</td>
                     <td>${user.username}</td>
-                    <td>${user.firstName}</td>
+                    <td>${user.email}</td>
                     <td>${user.dateOfBirth}</td>
                     <td>
                         <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>

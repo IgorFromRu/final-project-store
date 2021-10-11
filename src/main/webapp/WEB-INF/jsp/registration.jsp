@@ -27,15 +27,15 @@
     <h1>Регистрация</h1>
     <div class="inp">
         <form:form method="POST" modelAttribute="userForm">
-            <fieldset>
-                    <form:errors path="username"></form:errors>
-                    ${usernameError}
                 <div>
-                    <form:input class="pass" type="email" path="username" placeholder="Email"
-                                autofocus="true"></form:input>
+                    ${usernameError}
                 </div>
                 <div>
-                    <form:input class="pass" type="text" path="firstName" placeholder="Имя"></form:input>
+                    <form:input class="pass" type="text" path="username" placeholder="Имя"
+                             autofocus="true" title="Please provide only a Best Startup Ever corporate e-mail address"></form:input>
+                </div>
+                <div>
+                    <form:input class="pass" type="email" path="email" placeholder="Email"></form:input>
                 </div>
                 <div>
                     <form:input class="pass" type="date" path="dateOfBirth" placeholder="Дата рождения"></form:input>
@@ -48,17 +48,7 @@
                     <input class="pass" type="password" name="confirm_password" id="confirm_password"
                                 placeholder="Пароль" onkeyup='check();'/>
                     <span id='message'></span>
-                </div>
-
-<%--                    <form:input class="pass" type="password" path="password" placeholder="Пароль"--%>
-<%--                                id="password"></form:input>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <form:input class="pass" type="password" path="passwordConfirm"--%>
-<%--                                placeholder="Подтвердите пароль" id="confirm_password"></form:input>--%>
-                </div>
                 <button class="btn" type="submit">Зарегистрироваться</button>
-            </fieldset>
         </form:form>
     </div>
 </div>

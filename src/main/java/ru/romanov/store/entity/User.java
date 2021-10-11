@@ -2,6 +2,7 @@ package ru.romanov.store.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,14 +22,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min = 5, message = "Не меньше 5 знаков")
     private String username;
-    @Size(min = 8, message = "Не меньше 8 знаков")
-    private String password;
-    @Size(min = 2, message = "Не меньше 2 знаков")
-    private String firstName;
+    private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
+    private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
     @ManyToMany(fetch = FetchType.EAGER)
